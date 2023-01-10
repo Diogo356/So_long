@@ -6,7 +6,7 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:48:16 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:48:16 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:47:05 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	window(t_sl *game)
 		return (0);
 	}
 	game->pt_mlx.mlx_window = mlx_new_window(game->pt_mlx.mlx, game->w_width, \
-	game->w_heigth, "so_long - maclara-");
+	game->w_heigth, "So_long - dbelarmi");
 	if (game->pt_mlx.mlx_window == NULL )
 		return (0);
 	return (1);

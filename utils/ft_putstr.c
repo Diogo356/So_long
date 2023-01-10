@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:40:27 by dbelarmi          #+#    #+#             */
-/*   Updated: 2022/09/28 20:58:32 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:47:09 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr(char *s, int fd)
 {
 	int	i;
 
