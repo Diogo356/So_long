@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 16:47:50 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/01 10:55:07 by dbelarmi         ###   ########.fr       */
+/*   Created: 2023/02/28 10:57:05 by dbelarmi          #+#    #+#             */
+/*   Updated: 2023/02/28 11:07:35 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+void	ft_putchar(char c)
 {
-	s_long	game;
-
-	if (check_arguments(argc, argv) == 0)
-		return (0);
-	if (check_maps (argv, &game) == 0)
-	{
-		free_matrix_map(&game);
-		return (0);
-	}
-	game.steps = 0;
-	game.end_game = 0;
-	game_work(&game);
-	return (0);
+	write(1, &c, 1);
 }

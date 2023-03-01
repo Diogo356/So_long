@@ -6,13 +6,13 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:56 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:47:56 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:40:53 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	move_be_ok(t_sl *game, int keycode, int line, int col)
+static int	move_be_ok(s_long *game, int keycode, int line, int col)
 {
 	if (game->map.map[line][col] == '1')
 		return (0);
@@ -29,15 +29,15 @@ static int	move_be_ok(t_sl *game, int keycode, int line, int col)
 	return (0);
 }
 
-void	move_player(t_sl *game, int keycode, int col, int line)
+void	move_player(s_long *game, int keycode, int col, int line)
 {
 	char	*temp;
 	int		px;
 	int		py;
 	int		move_ok;
 
-	px = game->map.pla_pos.x;
-	py = game->map.pla_pos.y;
+	px = game->map.position_pl.x;
+	py = game->map.position_pl.y;
 	move_ok = move_be_ok(game, keycode, line, col);
 	if (move_ok > 0)
 	{
@@ -45,8 +45,8 @@ void	move_player(t_sl *game, int keycode, int col, int line)
 			game->vmap.c--;
 		game->map.map[px][py] = '0';
 		game->map.map[line][col] = 'P';
-		game->map.pla_pos.y = col;
-		game->map.pla_pos.x = line;
+		game->map.position_pl.y = col;
+		game->map.position_pl.x = line;
 		game->steps++;
 		temp = ft_itoa(game->steps);
 		ft_putstr("Steps move: ");

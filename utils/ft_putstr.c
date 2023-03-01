@@ -6,20 +6,20 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:40:27 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/01/10 12:47:09 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:18:36 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void	ft_putstr(char *s, int fd)
+void	ft_putstr(char *s)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		ft_putchar_fd(s[i], fd);
+		ft_putchar(s[i]);
 		i++;
 	}
 }

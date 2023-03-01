@@ -6,13 +6,13 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:41 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:47:41 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:38:50 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	open_images(t_sl *game)
+static int	open_images(s_long *game)
 {
 	int	x;
 	int	y;
@@ -36,13 +36,13 @@ static int	open_images(t_sl *game)
 	return (1);
 }
 
-static int	recipe_key(int keycode, t_sl *game)
+static int	recipe_key(int keycode, s_long *game)
 {
 	int	line;
 	int	col;
 
-	line = game->map.pla_pos.x;
-	col = game->map.pla_pos.y;
+	line = game->map.position_pl.x;
+	col = game->map.position_pl.y;
 	if (keycode == ESC)
 		destroyer_window(game);
 	if (keycode == W || keycode == AW_UP)
@@ -58,7 +58,7 @@ static int	recipe_key(int keycode, t_sl *game)
 	return (1);
 }
 
-static void	put_one_image(t_sl *game, int line, int col)
+static void	put_one_image(s_long *game, int line, int col)
 {
 	if (game->map.map[line] && game->map.map[line][col] == '1')
 		mlx_put_image_to_window(game->pt_mlx.mlx, game->pt_mlx.mlx_window, \
@@ -77,7 +77,7 @@ static void	put_one_image(t_sl *game, int line, int col)
 		game->image.exit.img, IMG_SIZE * col, IMG_SIZE * line);
 }
 
-static int	game_draw(t_sl *game)
+static int	game_draw(s_long *game)
 {
 	int	line;
 	int	col;
@@ -99,7 +99,7 @@ static int	game_draw(t_sl *game)
 	return (1);
 }
 
-void	game_work(t_sl *game)
+void	game_work(s_long *game)
 {
 	int	check_win;
 

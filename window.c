@@ -6,13 +6,13 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:48:16 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/01/10 12:47:05 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:01:50 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	window(t_sl *game)
+int	window(s_long *game)
 {
 	game->w_width = IMG_SIZE * (game->map.col + 1);
 	game->w_heigth = IMG_SIZE * (game->map.line + 1);
@@ -29,7 +29,7 @@ int	window(t_sl *game)
 	return (1);
 }
 
-int	destroyer_window(t_sl *game)
+int	destroyer_window(s_long *game)
 {
 	free_matrix_map(game);
 	if (!game->pt_mlx.mlx)

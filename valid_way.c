@@ -6,13 +6,13 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:48:11 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:48:11 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:17:57 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	player_position(t_sl *game)
+static void	player_position(s_long *game)
 {
 	int	l;
 	int	c;
@@ -26,8 +26,8 @@ static void	player_position(t_sl *game)
 		{
 			if (game->map.map[l][c] && game->map.map[l][c] == 'P')
 			{
-				game->map.pla_pos.x = l;
-				game->map.pla_pos.y = c;
+				game->map.position_pl.x = l;
+				game->map.position_pl.y = c;
 				return ;
 			}
 			c++;
@@ -36,7 +36,7 @@ static void	player_position(t_sl *game)
 	}
 }
 
-static void	flood_fill(t_sl *game, int px, int py)
+static void	flood_fill(s_long *game, int px, int py)
 {
 	if (!game->map.b_map || !game->map.b_map[px])
 		return ;
@@ -54,12 +54,12 @@ static void	flood_fill(t_sl *game, int px, int py)
 	return ;
 }
 
-int	valid_way(t_sl *game)
+int	valid_way(s_long *game)
 {
 	game->collect = game->vmap.c;
 	game->exit = game->vmap.e;
 	player_position(game);
-	flood_fill(game, game->map.pla_pos.x, game->map.pla_pos.y);
+	flood_fill(game, game->map.position_pl.x, game->map.position_pl.y);
 	if (game->vmap.c == 0 && game->vmap.e == 0)
 	{
 		game->vmap.c = game->collect;

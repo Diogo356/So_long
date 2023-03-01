@@ -6,7 +6,7 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:48:06 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:48:06 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:56:29 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "mlx.h"
+# include <mlx.h>
 
 //gnl
 # define BUFFER_SIZE 1
@@ -71,7 +71,7 @@ typedef struct s_draw_objs
 	t_img	empty;
 }	t_draw;
 
-// count map itens
+// objects maps
 typedef struct s_validmap
 {
 	int	c;
@@ -84,14 +84,14 @@ typedef struct s_map
 {
 	char	**map;
 	char	**b_map;
-	t_pos	pla_pos;
+	t_pos	position_pl;
 	int		line;
 	int		col;
 	int		item;
 }	t_map;
 
 // big struct os structs
-typedef struct s_so_long
+typedef struct so_long
 {
 	t_mlx_p	pt_mlx;
 	t_map	map;
@@ -103,7 +103,7 @@ typedef struct s_so_long
 	int		w_width;
 	int		w_heigth;
 	int		end_game;
-}	t_sl;
+}	s_long;
 
 // utils
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
@@ -111,12 +111,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *src);
-char	*ft_strjoin(char *s1, char const *s2);
+char	*ft_strjoin(char *s1, const char *s2);
 int		ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c);
 void	ft_putstr(char *s);
 char	*ft_itoa(int n);
 char	*ft_strstr(const char *s1, const char *s2);
+void	ft_putchar(char c);
 // gnl
 char	*get_next_line(int fd);
 // init
@@ -125,21 +126,23 @@ void	init_validate_map(t_valmp *vmap);
 // read 
 char	**read_maps(char **argv);
 // check
-int		check_maps(char **argv, t_sl *game);
+int		check_maps(char **argv, s_long *game);
 int		check_arguments(int argc, char **argv);
+int	validate_itens_map(s_long *game);
+int	validate_caracters_map(s_long *game);
 // check2
-int		square_map(t_sl *game);
-int		check_wall(t_sl *game);
+int		map_square(s_long *game);
+int		check_wall(s_long *game);
 // valid_way
-int		valid_way(t_sl *game);
+int		valid_way(s_long *game);
 // window
-int		window(t_sl *game);
-int		destroyer_window(t_sl *game);
+int		window(s_long *game);
+int		destroyer_window(s_long *game);
 // game 
-void	game_work(t_sl *game);
+void	game_work(s_long *game);
 // move
-void	move_player(t_sl *game, int keycode, int col, int line);
+void	move_player(s_long *game, int keycode, int col, int line);
 // clear_map
-void	free_matrix_map(t_sl *game);
+void	free_matrix_map(s_long *game);
 
 #endif

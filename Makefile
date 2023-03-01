@@ -34,6 +34,7 @@ SRCS	= ./main.c \
 		$(PATH_UTILS)ft_strlen.c \
 		$(PATH_UTILS)ft_substr.c \
 		$(PATH_UTILS)ft_strstr.c \
+		$(PATH_UTILS)ft_putchar.c \
 
 OBJS	= $(patsubst $(PATH_SRCS)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
