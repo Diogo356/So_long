@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   check_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:30 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/01 18:41:28 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/02 22:07:16 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 int	map_square(s_long *game)
 {
@@ -37,23 +38,23 @@ static int	check_vertical(s_long *game)
 
 	x = 0;
 	y = 0;
-	while (game->map.map[y] && game->map.map[y][x] == '1') 
+	while (game->map.map[y] && game->map.map[y][x] == '1') // faço a contagem de qual o tamanho da parede da primeira coluna
 		y++;
-	if (y - 1 != game->map.line)
+	if (y - 1 != game->map.line) // verifico se o tamanho está correto.
 	{
 		write(1, "Error\nvertical left wall map is broken\n", 40);
 		return (0);
 	}
-	x = game->map.col;
-	y = 0;
-	while (game->map.map[y] && game->map.map[y][x] == '1')
+	x = game->map.col; // o x vai receber a posição da ultima coluna.
+	y = 0; // zero o y.
+	while (game->map.map[y] && game->map.map[y][x] == '1') // faço a contagem do tamanho da ultima parede
 		y++;
-	if (y - 1 != game->map.line)
+	if (y - 1 != game->map.line) //verifico se o tamnho esta correto.
 	{
 		write(1, "Error\nvertical rigth wall map is broken\n", 41);
 		return (0);
 	}
-	return (1);
+	return (1);// retorna 1 para informar que está tudo correto.
 }
 
 static int	check_horizontal(s_long *game)
@@ -63,23 +64,23 @@ static int	check_horizontal(s_long *game)
 
 	x = 0;
 	y = 0;
-	while (game->map.map[y] && game->map.map[y][x] == '1')
+	while (game->map.map[y] && game->map.map[y][x] == '1') // faço a contagem da primeira linha.
 		x++;
-	if (x - 1 != game->map.col)
+	if (x - 1 != game->map.col) // verifco se o tamnho está correto.
 	{
 		write(1, "Error\nhorizontal top wall map is broken\n", 41);
 		return (0);
 	}
-	x = 0;
-	y = game->map.line;
-	while (game->map.map[y] && game->map.map[y][x] == '1')
+	x = 0; // zero o x.
+	y = game->map.line; // o y vai receber a posição da ultima linha.
+	while (game->map.map[y] && game->map.map[y][x] == '1') // faço a contagem da ultima linha.
 		x++;
-	if (x - 1 != game->map.col)
+	if (x - 1 != game->map.col) // verifico se o tamnho está correto.
 	{
 		write(1, "Error\nhorizontal bottom wall map is broken\n", 44);
 		return (0);
 	}
-	return (1);
+	return (1); // retorna 1 para informar que está tudo correto.
 }
 
 int	check_wall(s_long *game)
@@ -90,11 +91,11 @@ int	check_wall(s_long *game)
 		return (0);
 	if (map_square(game) == 0) //valida se o mapa é quadrado
 		return (0);
-	if (check_vertical(game) == 0)
+	if (check_vertical(game) == 0) // verifico se na primeira coluna e se na ultima coluna do mapa tem paredes.
 		return (0);
-	if (check_horizontal(game) == 0)
+	if (check_horizontal(game) == 0) // verifico se na parte superior e inferior do mapa tem pardes
 		return (0);
-	if (valid_way(game) == 0)
+	if (valid_way(game) == 0) // valida o caminho do mapa;
 		return (0);
 	return (1);
 }

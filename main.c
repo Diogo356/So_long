@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:50 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/01 10:55:07 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/02 09:17:41 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	s_long	game;
 
-	if (check_arguments(argc, argv) == 0)
+	if (check_arguments(argc, argv) == 0) // verifico se os 
 		return (0);
 	if (check_maps (argv, &game) == 0)
 	{
