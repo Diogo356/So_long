@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:48:06 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/03 12:34:56 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:12:49 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct so_long
 	int		w_width;
 	int		w_heigth;
 	int		end_game;
-}	s_long;
+}	t_long;
 
 // utils
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
@@ -126,23 +126,23 @@ void	init_validate_map(t_valmp *vmap);
 // read 
 char	**read_maps(char **argv);
 // check
-int		check_maps(char **argv, s_long *game);
+int		check_maps(char **argv, t_long *game);
 int		check_arguments(int argc, char **argv);
-int	validate_itens_map(s_long *game);
-int	validate_caracters_map(s_long *game);
+int		validate_itens_map(t_long *game);
+int		validate_caracters_map(t_long *game);
 // check2
-int		map_square(s_long *game);
-int		check_wall(s_long *game);
+int		map_square(t_long *game);
+int		check_wall(t_long *game);
 // valid_way
-int		valid_way(s_long *game);
+int		valid_way(t_long *game);
 // window
-int		window(s_long *game);
-int		destroyer_window(s_long *game);
+int		window(t_long *game);
+int		destroyer_window(t_long *game);
 // game 
-void	game_work(s_long *game);
+void	game_work(t_long *game);
 // move
-void	move_player(s_long *game, int keycode, int col, int line);
+void	move_player(t_long *game, int keycode, int col, int line);
 // clear_map
-void	free_matrix_map(s_long *game);
+void	free_matrix_map(t_long *game);
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:41 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/04 14:06:30 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:21:36 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	open_images(s_long *game)
+static int	open_images(t_long *game)
 {
 	int	x;
 	int	y;
@@ -20,23 +20,23 @@ static int	open_images(s_long *game)
 	x = 0;
 	y = 0;
 	game->image.collect.img = mlx_xpm_file_to_image(game->pt_mlx.mlx, \
-	"./imgs/collect.xpm", &x, &y); // uso essa função para fazer o arquivo collect.xpm virar uma imagem.
+	"./imgs/collect.xpm", &x, &y);
 	game->image.player.img = mlx_xpm_file_to_image(game->pt_mlx.mlx, \
-	"./imgs/player.xpm", &x, &y);// uso essa função para fazer o arquivo player.xpm virar uma imagem.
+	"./imgs/player.xpm", &x, &y);
 	game->image.empty.img = mlx_xpm_file_to_image(game->pt_mlx.mlx, \
-	"./imgs/empty.xpm", &x, &y); // uso essa função para fazer o arquivo empty.xpm virar uma imagem.
+	"./imgs/empty.xpm", &x, &y);
 	game->image.wall.img = mlx_xpm_file_to_image(game->pt_mlx.mlx, \
-	"./imgs/wall.xpm", &x, &y);// uso essa função para fazer o arquivo collect.xpm virar uma imagem.
+	"./imgs/wall.xpm", &x, &y);
 	game->image.exit.img = mlx_xpm_file_to_image(game->pt_mlx.mlx, \
-	"./imgs/exit.xpm", &x, &y); // // uso essa função para fazer o arquivo exit.xpm virar uma imagem.
+	"./imgs/exit.xpm", &x, &y);
 	if (game->image.collect.img == NULL || game->image.player.img == NULL || \
 	game->image.empty.img == NULL || game->image.wall.img == NULL || \
-	game->image.exit.img == NULL ) // verifica se está está tudo correto.
-		destroyer_window(game); // se não estiver, eu uso essa func para fechar as janelas
-	return (1); // retorna que ocorreu tudo bem.
+	game->image.exit.img == NULL )
+		destroyer_window(game);
+	return (1);
 }
 
-static int	recipe_key(int keycode, s_long *game)
+static	int	recipe_key(int keycode, t_long *game)
 {
 	int	line;
 	int	col;
@@ -46,13 +46,13 @@ static int	recipe_key(int keycode, s_long *game)
 	if (keycode == ESC)
 		destroyer_window(game);
 	if (keycode == W || keycode == AW_UP)
-		line--; 
+		line--;
 	if (keycode == S || keycode == AW_DN)
 		line++;
 	if (keycode == A || keycode == AW_L)
-		col--; 
+		col--;
 	if (keycode == D || keycode == AW_R)
-		col++; 
+		col++;
 	if (!game->end_game)
 		move_player(game, keycode, col, line);
 	return (1);

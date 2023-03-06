@@ -6,7 +6,7 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:34 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/01 18:12:17 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:46:32 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	validate_itens_map(s_long *game)
 			if (game->map.map[l][c] && game->map.map[l][c] == 'E')// verifica quantas saidas exitem no mapa
 				game->vmap.e++;
 			c++;
-		}
+		} >= 3
 		l++;
 	}
 	return (msg_error_itens(game)); // retorna a mensagem de erro

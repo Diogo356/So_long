@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   check_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:30 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/04 14:02:35 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:19:25 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
-int	map_square(s_long *game)
+int	map_square(t_long *game)
 {
 	int	l;
 
 	l = 0;
 	game->map.col = ft_strlen(game->map.map[0]);
-	while (game->map.map[l] && (game->map.col == ft_strlen(game->map.map[l]))) 
+	while (game->map.map[l] && (game->map.col == ft_strlen(game->map.map[l])))
 		l++;
 	if (game->map.map[l] == NULL)
 	{
@@ -31,7 +30,7 @@ int	map_square(s_long *game)
 	return (0);
 }
 
-static int	check_vertical(s_long *game)
+static int	check_vertical(t_long *game)
 {
 	int	x;
 	int	y;
@@ -49,6 +48,7 @@ static int	check_vertical(s_long *game)
 	y = 0;
 	while (game->map.map[y] && game->map.map[y][x] == '1')
 		y++;
+
 	if (y - 1 != game->map.line)
 	{
 		write(1, "Error\nvertical rigth wall map is broken\n", 41);
@@ -57,13 +57,13 @@ static int	check_vertical(s_long *game)
 	return (1);
 }
 
-static int	check_horizontal(s_long *game)
+static int	check_horizontal(t_long *game)
 {
 	int	x;
 	int	y;
 
 	x = 0;
-	y = 0;
+	y = 0; 
 	while (game->map.map[y] && game->map.map[y][x] == '1')
 		x++;
 	if (x - 1 != game->map.col)
@@ -83,7 +83,7 @@ static int	check_horizontal(s_long *game)
 	return (1);
 }
 
-int	check_wall(s_long *game)
+int	check_wall(t_long *game)
 {
 	if (validate_caracters_map(game) == 0)
 		return (0);
@@ -94,6 +94,7 @@ int	check_wall(s_long *game)
 	if (check_vertical(game) == 0)
 		return (0);
 	if (check_horizontal(game) == 0)
+		return (0);
 	if (valid_way(game) == 0)
 		return (0);
 	return (1);

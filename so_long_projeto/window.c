@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:48:16 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/04 13:47:36 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:22:15 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	window(s_long *game)
+int	window(t_long *game)
 {
-	game->w_width = IMG_SIZE * (game->map.col + 1); 
+	game->w_width = IMG_SIZE * (game->map.col + 1);
 	game->w_heigth = IMG_SIZE * (game->map.line + 1);
 	game->pt_mlx.mlx = mlx_init();
 	if (game->pt_mlx.mlx == NULL)
@@ -29,7 +29,7 @@ int	window(s_long *game)
 	return (1);
 }
 
-int	destroyer_window(s_long *game)
+int	destroyer_window(t_long *game)
 {
 	free_matrix_map(game);
 	if (!game->pt_mlx.mlx)

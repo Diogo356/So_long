@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:47:34 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/04 14:04:24 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:17:46 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ int	check_arguments(int argc, char **argv)
 	i = 0;
 	if (argc == 2)
 	{
-		i = ft_strlen(argv[1]);
-		if ((argv[1][i - 4] == '.') && (argv[1][i - 3] == 'b') && \
+		if ((argv[1][i - 3] == 'b') && \
 		(argv[1][i - 2] == 'e') && (argv[1][i - 1] == 'r'))
 			return (1);
-		else 
+		else
 		{
 			write (1, "Error\nInvalid file format!\n", 28);
 			return (0);
@@ -33,7 +32,7 @@ int	check_arguments(int argc, char **argv)
 	return (0);
 }
 
-static int	msg_error_itens(s_long *game)
+static int	msg_error_itens(t_long *game)
 {
 	if (game->vmap.e != 1 || game->vmap.p != 1 || game->vmap.c == 0)
 	{
@@ -56,7 +55,7 @@ static int	msg_error_itens(s_long *game)
 	return (1);
 }
 
-int	validate_caracters_map(s_long *game)
+int	validate_caracters_map(t_long *game)
 {
 	int	l;
 	int	c;
@@ -81,7 +80,7 @@ int	validate_caracters_map(s_long *game)
 	return (1);
 }
 
-int	validate_itens_map(s_long *game)
+int	validate_itens_map(t_long *game)
 {
 	int	l;
 	int	c;
@@ -105,7 +104,7 @@ int	validate_itens_map(s_long *game)
 	return (msg_error_itens(game));
 }
 
-int	check_maps(char **argv, s_long *game)
+int	check_maps(char **argv, t_long *game)
 {
 	game->map.map = read_maps(argv);
 	if (game->map.map == NULL)

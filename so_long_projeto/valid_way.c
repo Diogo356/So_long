@@ -3,31 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   valid_way.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbelarmi <dbelarmi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:48:11 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/03/02 22:06:53 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:18:41 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-static void	player_position(s_long *game)
+static void	player_position(t_long *game)
 {
 	int	l;
 	int	c;
 
 	l = 0;
-	while (game->map.map[l]) // verifica se a linha é valida
+	while (game->map.map[l])
 	{
 		c = 0;
-		while (game->map.map[l] && game->map.map[l][c]) // vai procurar dentro do mapa a posição do personagem.
+		while (game->map.map[l] && game->map.map[l][c])
 		{
-			if (game->map.map[l][c] && game->map.map[l][c] == 'P') //se encontrar a posição do personagem
+			if (game->map.map[l][c] && game->map.map[l][c] == 'P')
 			{
-				game->map.position_pl.x = l; // eu passo a posição da linha para a position_pl.x
-				game->map.position_pl.y = c; // eu passo a posição da coluna para a position_pl.y
-				return ; //saio da função porque já encontrei a posição do player;
+				game->map.position_pl.x = l;
+				game->map.position_pl.y = c;
+				return ;
 			}
 			c++;
 		}
@@ -35,7 +33,7 @@ static void	player_position(s_long *game)
 	}
 }
 
-static void	flood_fill(s_long *game, int px, int py)
+static void	flood_fill(t_long *game, int px, int py)
 {
 	if (!game->map.b_map || !game->map.b_map[px])
 		return ;
@@ -53,18 +51,18 @@ static void	flood_fill(s_long *game, int px, int py)
 	return ;
 }
 
-int	valid_way(s_long *game)
+int	valid_way(t_long *game)
 {
 	game->collect = game->vmap.c;
 	game->exit = game->vmap.e;
-	player_position(game); // função para encontrar a posição do player.
+	player_position(game);
 	flood_fill(game, game->map.position_pl.x, game->map.position_pl.y);
-	if (game->vmap.c == 0 && game->vmap.e == 0) // se todos os itens forão coletados
+	if (game->vmap.c == 0 && game->vmap.e == 0)
 	{
-		game->vmap.c = game->collect; // o collect recebe o valor dos coletaveis 
-		game->vmap.e = game->exit; // o exit recebe o valor da saida
-		return (1); // e retrona positivo;
+		game->vmap.c = game->collect;
+		game->vmap.e = game->exit;
+		return (1);
 	}
-	write(1, "Error\ninvalid path\n", 20); // se algo der errado, ele retorna erro;
+	write(1, "Error\ninvalid path\n", 20);
 	return (0);
 }
